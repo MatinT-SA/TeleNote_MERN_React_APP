@@ -21,7 +21,7 @@ app.use('/', (req, res) => {
     res.send("Hello to TeleNote APIs.");
 })
 
-const CONNECTION_URL = 'mongodb+srv://MatinMERNSocialMedia:MatinMERNSocialMedia123@cluster0.oq8pn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECTION_URL = 'mongodb+srv://TeleNote:MyPassword@cluster0.oq8pn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
