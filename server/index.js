@@ -17,9 +17,9 @@ app.use(cors());
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 
-app.use('/', (req, res) => {
-    res.send("Hello to TeleNote APIs.");
-})
+// app.get('/', (req, res) => {
+//     res.send("Hello to TeleNote APIs.");
+// });
 
 const CONNECTION_URL = 'mongodb+srv://TeleNote:MyPassword@cluster0.oq8pn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;

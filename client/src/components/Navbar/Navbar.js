@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import decode from 'jwt-decode';
 
 import useStyles from './styles'
-import telenote from '../../images/telenote.png'
+import TeleNoteLogo from '../../images/TeleNoteLogo.png'
 import { LOGOUT } from '../../constants/actionTypes'
 
 const Navbar = () => {
@@ -37,10 +37,9 @@ const Navbar = () => {
 
     return (
         <AppBar className={classes.appBar} position='static' color='inherit'>
-            <div className={classes.brandContainer}>
-                <Typography component={Link} to='/' variant='h2' align='center' className={classes.heading}>TeleNote</Typography>
-                <img src={telenote} className={classes.image} alt="TeleNote" height="60" width="60" />
-            </div>
+            <Link to='/' className={classes.brandContainer}>
+                <img src={TeleNoteLogo} className={classes.image} alt="TeleNote Logo" height="100" width="170" />
+            </Link>
             <Toolbar className={classes.toolbar}>
                 {user?.result ? (
                     <div className={classes.profile}>

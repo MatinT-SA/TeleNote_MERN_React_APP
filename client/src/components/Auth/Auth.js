@@ -20,6 +20,7 @@ const Auth = () => {
     const [formData, setFormData] = useState(initialState);
     const [isSignup, setIsSignup] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [errLogin, setErrLogin] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -94,9 +95,9 @@ const Auth = () => {
                         onFailure={googleFailure}
                         cookiePolicy="single_host_origin"
                     />
-                    <Grid container justifyContent='flex-end'>
+                    <Grid container justifyContent='flex-start'>
                         <Grid item>
-                            <Button onClick={switchMode}>
+                            <Button className={classes.noAccount} onClick={switchMode}>
                                 {isSignup ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
                             </Button>
                         </Grid>

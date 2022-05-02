@@ -5,13 +5,15 @@ import useStyles from './styles'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { createPosts, updatedPost } from '../../actions/posts'
+import { useHistory } from 'react-router-dom'
 
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({ title: "", message: "", tags: "", selectedFile: "" });
-    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    const post = useSelector((state) => currentId ? state.posts.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
+    const history = useHistory();
 
     useEffect(() => {
         if (post) setPostData(post);
@@ -21,7 +23,7 @@ const Form = ({ currentId, setCurrentId }) => {
         e.preventDefault();
 
         if (currentId === 0) {
-            dispatch(createPosts({ ...postData, name: user?.result?.name }));
+            dispatch(createPosts({ ...postData, name: user?.result?.name }, history));
         } else {
             dispatch(updatedPost(currentId, { ...postData, name: user?.result?.name }));
         }
@@ -45,7 +47,7 @@ const Form = ({ currentId, setCurrentId }) => {
     }
 
     return (
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} elevation={6}>
             <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant="h6">
                     {currentId ? 'Editing Your Post' : 'Wanna Share Something?'}
